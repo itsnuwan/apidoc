@@ -34,11 +34,21 @@ Introduction
 
 This is a simple documentation application which can be use to document RESTfull api functionalities.
 
+Used technologies/modules 
+=========================
+        * NoSQL database [ MongoDB ]
+        * Nodejs 
+            * express [ nodejs framework]
+            * ejs [ node templating engine ]
+            * mongoose [ mongoDB driver for nodejs ]
+        
+
 TODO
 ====
+* GUI improvements
 * User( role base ) authentication
 * Administration functionalities
-  * CRUD operations od api data
+  * CRUD operations of api data
 * Support multiple database drivers ( MySQL, CouchDB, FileSysStorage, etc... )
 * Add more TODOs to TODO list
 
