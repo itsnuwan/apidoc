@@ -1,11 +1,17 @@
-# Build and Release Folders
-bin/
-bin-debug/
-bin-release/
-
-# Other files and folders
-.settings/
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+.DS_Store
+*.sw*
+*.seed
+*.tmp
+*.log
+.project
+.settings
+.tm_properties
+data
+node_modules/
+lib-cov/
+output
+build
+upload.py
+rcover_html/
+.coverage_data/
+docs/sphinx-docs/source/driver-articles/
