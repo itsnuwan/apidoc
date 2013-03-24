@@ -1,0 +1,68 @@
+<h1>API List</h1>
+
+<div class="container-fluid">
+  	<div class="row-fluid">
+	    <div class="span2">
+	      	<ul class="nav nav-tabs nav-stacked">
+	      		<li class="active"><a href="#navs"><i class="icon-chevron-right"></i> User Mgt API</a></li>
+	  			<li><a href="#navbar"><i class="icon-chevron-right"></i> DB Mgt API</a></li>
+	  			<li><a href="#navbar"><i class="icon-chevron-right"></i> Notifictions API</a></li>
+			</ul>
+	    </div>
+
+	    <div class="span10">
+			<div class="accordion" id="accordion2">
+
+				<%
+				var collapseNum = 0;
+				entries.forEach( function( entry ) { 
+				%>
+
+					<div class="accordion-group">
+					    <div class="accordion-heading">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<%= entry._id %>">
+					        <span class="api-type-<%= entry.method %>"></span>
+					        <span class="api-url-<%= entry.method %>"><%= entry.title %></span>
+					      </a>
+					    </div>
+					    <div id="<%= entry._id %>" class="accordion-body collapse">
+					      <div class="accordion-inner">
+						        <table class="table table-bordered table-hover table-striped">
+					              <tbody>
+					                <tr>
+					                  <td>URL</td>
+					                  <td><%= entry.url %></td>
+					                </tr>
+
+					                <tr>
+					                  <td>Request Params</td>
+					                  <td>
+					                  		username : [Username of the new user]<br/>
+					                  		password : [ md5 encripted password of the new user]
+					                  </td>
+					                </tr>
+
+					                <tr>
+					                  <td>Response</td>
+					                  <td>
+					                  	Type : json<br/>
+					                    Template: {status:"",msg:"",data:null}<br/>
+					                    status : Boolean value of the request status<br/>
+					                    msg    : Error / Warning / Success message<br/>
+					                    data   : Data attached to the respond<br/>
+					                  </td>
+					                </tr>
+					              </tbody>
+					            </table>
+					      </div>
+					    </div>
+					</div>
+				<%
+				});
+				%>
+			</div>
+	    </div>
+
+  	</div>
+</div>
+

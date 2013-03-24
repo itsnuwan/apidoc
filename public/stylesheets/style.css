@@ -1,0 +1,67 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+a:hover{
+	text-decoration:  none;
+}
+.api-type-GET{
+	background-color: rgb(255, 146, 61);
+	padding: 8px;
+	color: #fff;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	padding-left: 43px;
+	padding-right: 46px;
+}
+.api-type-GET:before{
+	content: " GET ";
+}
+.api-type-POST{
+	background-color: rgb(31, 43, 182);
+	padding: 8px;
+	color: #fff;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	padding-right: 37px;
+	padding-left: 43px;	
+}
+.api-type-POST:before{
+	content: " POST ";
+}
+
+.api-url-GET{
+	padding-right: 612px;
+	padding-left: 25px;
+	width: 100%;
+	background-color: rgb(255, 249, 244);
+	padding-top: 8px;
+	padding-bottom: 8px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+.api-url-POST{
+	padding-right: 612px;
+	padding-left: 25px;
+	width: 100%;
+	background-color: rgb(240, 246, 255);
+	padding-top: 8px;
+	padding-bottom: 8px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.accordion-toggle{
+	padding-left: 0px !important;
+}
+.accordion-group{
+	margin-bottom: 10px;
+}
