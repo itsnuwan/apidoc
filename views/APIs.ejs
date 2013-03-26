@@ -1,12 +1,21 @@
-<h1>API List</h1>
+<h1>API Documentation</h1>
 
 <div class="container-fluid">
   	<div class="row-fluid">
 	    <div class="span2">
 	      	<ul class="nav nav-tabs nav-stacked">
-	      		<li class="active"><a href="#navs"><i class="icon-chevron-right"></i> User Mgt API</a></li>
-	  			<li><a href="#navbar"><i class="icon-chevron-right"></i> DB Mgt API</a></li>
-	  			<li><a href="#navbar"><i class="icon-chevron-right"></i> Notifictions API</a></li>
+	      	    <% 
+	      	    categories.forEach( function( cat ) {
+	      	    	var active = '';
+	      	    	if(api == cat)
+	      	    	{
+	      	    		active = "active";
+	      	    	}
+	      	    %>
+	      	    	<li class="<%=active %>"><a href="/?api=<%=cat %>"><i class="icon-chevron-right"></i> <%=cat %></a></li>
+	      	    <%
+	      	    });
+	      	    %>
 			</ul>
 	    </div>
 
@@ -14,8 +23,9 @@
 			<div class="accordion" id="accordion2">
 
 				<%
-				var collapseNum = 0;
 				entries.forEach( function( entry ) { 
+					if(api == entry.category )
+					{
 				%>
 
 					<div class="accordion-group">
@@ -37,8 +47,16 @@
 					                <tr>
 					                  <td>Request Params</td>
 					                  <td>
-					                  		username : [Username of the new user]<br/>
-					                  		password : [ md5 encripted password of the new user]
+					                  		<%
+					                  		if(entry.params != 'undefined')
+					                  		{
+												entry.params.forEach( function( param_name, param_val ) { 
+											%>
+					                  				<%=param_name%> : <%=param_val%><br/>
+					                  		<%
+												});
+											}
+											%>
 					                  </td>
 					                </tr>
 
@@ -58,6 +76,7 @@
 					    </div>
 					</div>
 				<%
+					}
 				});
 				%>
 			</div>
@@ -65,4 +84,3 @@
 
   	</div>
 </div>
-

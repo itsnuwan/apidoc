@@ -9,14 +9,14 @@ exports.index = function(req, res){
 };
 
 exports.find = function(req, res){
-	APIEntry.findAllAPIs(function(err, entries){
+	APIEntry.findAPIs(req.query.api, function(err, entries){
 		if(err)
 		{
 			console.log("ERR:"+err);
 		}else{
-			console.log(entries);
-			res.render('APIs',{"entries":entries});
+			APIEntry.findAllCategories(function(err,categories){
+				res.render('APIs',{"entries":entries,"categories":categories,"api":req.query.api});
+			});
 		}
 	});
-	
 };
