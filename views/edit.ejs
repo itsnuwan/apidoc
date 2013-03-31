@@ -1,0 +1,135 @@
+<h1>API Documentation :: Edit API Entry</h1>
+
+<ul class="breadcrumb">
+  <li><a href="/api-admin">AdminHome</a> <span class="divider">/</span></li>
+  <li class="active">Edit</li>
+</ul>
+
+<form class="form-horizontal" method="post" action="/edit">
+	<div class="control-group">
+		<label class="control-label" for="api_category">API Category </label>
+		<div class="controls">
+			<select name="api_category" id="api_category">
+				<% categories.forEach( function( cat ) { 
+					var uc_cat = cat.toUpperCase();
+						if(cat == entry.category)
+						{ 
+				%>
+							<option selected="selected" value="<%=cat %>"><%=uc_cat %></option>
+				<%
+						}else{
+				%>
+							<option value="<%=cat %>"><%=uc_cat %></option>
+				<%
+						}
+				%>
+				<% }); %>
+				<option value="add">Add New+</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="control-group new-api-category">
+		<label class="control-label" for="new_api_category">New API Category </label>
+		<div class="controls">
+			<input type="text" placeholder=" eg-: UserMgt" name="new_api_category" id="new_api_category" />
+		</div>
+	</div>
+
+  	<div class="control-group">
+  		<label class="control-label" for="api_title">Title </label>
+	  	<div class="controls">
+			<input type="text" placeholder=" eg-: Create new user" name="api_title" id="api_title" value="<%=entry.title%>" />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="api_url">URL </label>
+		<div class="controls">
+			<input type="text" placeholder=" eg-: /user/create" name="api_url" id="api_url" value="<%=entry.url %>" />
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="api_method">Method </label>
+		<div class="controls">
+			<select name="api_method" id="api_method">
+				<%
+					var api_methods = ["GET","POST","PUT","DELETE"];
+					api_methods.forEach(function(api_method){
+						if(entry.method == api_method)
+						{
+				%> 
+							<option selected="selected" value="<%=api_method %>"><%=api_method %></option>
+				<%
+						}else{
+				%>
+							<option value="<%=api_method %>"><%=api_method %></option>
+				<%
+						}
+					})
+				%>
+			</select>
+		</div>
+	</div>
+	<!-- #################### Request params ###################### -->
+    <legend class="clickable" data-toggle="collapse" data-target="#request_params">Request parameters</legend>
+    <fieldset id="request_params" class="collapse">
+    	<button class="btn" id="add_req_param_btn">Add+</button>
+		<% 
+    	if(typeof entry.params == 'object')
+    	{
+    		entry.params.forEach(function(param){
+    	%>
+		    	<div class="control-group response-param">
+					<label class="control-label" for="api_param_name"></label>
+					<div class="controls">
+						<input type="text" placeholder="Parameter name" name="api_param_name" value="<%=param.name %>" />
+						<input type="text" placeholder="value" name="api_param_value" value="<%=param.description %>" />
+					</div>
+				</div>    		
+    	<%
+    		});
+    	}
+    	%>
+	</fieldset>
+	<!-- ################### Response params ##################### -->
+    <legend class="clickable" data-toggle="collapse" data-target="#response_params">Response parameters</legend>
+    <fieldset id="response_params" class="collapse">
+    	<button class="btn" id="add_res_param_btn">Add+</button>
+    	<% 
+    	if(typeof entry.response == 'object')
+    	{
+    		entry.response.forEach(function(res){
+    	%>
+		    	<div class="control-group response-param">
+					<label class="control-label" for="api_response_param_name"></label>
+					<div class="controls">
+						<input type="text" placeholder="Parameter name" name="api_response_param_name" value="<%=res.name %>" />
+						<input type="text" placeholder="value" name="api_response_param_value" value="<%=res.description %>" />
+					</div>
+				</div>    		
+    	<%
+    		});
+    	}
+    	%>
+
+    </fieldset>
+    <!-- ################### End of Response params ############## -->
+
+    <!-- ################### HTML Editor ######################### -->
+    <legend class="clickable" id="api_html_editor_btn" data-toggle="collapse" data-target="#api_html_editor">HTML Editor</legend>
+    <fieldset id="api_html_editor" class="collapse">
+		<div class="control-group">
+	    	<div class="controls">
+	      		<textarea name="api_html_data" style="width: 810px; height: 200px;display:none;" class="api-textarea" placeholder="Enter text ..."><%-entry.html %></textarea>
+	    	</div>
+	  	</div>
+	</fieldset>
+  	<!-- ################### End of HTML editor ################## -->
+	<div class="control-group">
+    	<div class="controls">
+      		<button type="submit" class="btn">Update</button>
+      		<a class="btn" href="/api-admin">Cancel</a>
+    	</div>
+  	</div>
+  	<input type="hidden" name="api_id" value="<%=entry._id %>" />
+</form>

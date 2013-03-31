@@ -1,9 +1,12 @@
-<h1>API Documentation</h1>
+<h1>API Documentation :: Admin Area</h1>
 
 <ul class="breadcrumb">
-  <li><a href="/">Home</a></li><span class="divider"> /</span>
+  <li><a href="/api-admin">AdminHome</a></li><span class="divider"> /</span>
   <li class="active"><%=api %> </li>
 </ul>
+
+<a style="margin: 0px 0px 14px 22px;" class="btn" href="/api-add"><i class="icon-plus"></i> New API Entry</a>
+
 
 <div class="container-fluid">
   	<div class="row-fluid">
@@ -17,7 +20,7 @@
 	      	    		active = "active";
 	      	    	}
 	      	    %>
-	      	    	<li class="<%=active %>"><a href="/?api=<%=cat %>"><i class="icon-chevron-right"></i> <%=cat %></a></li>
+	      	    	<li class="<%=active %>"><a href="/api-admin/?api=<%=cat %>"><i class="icon-chevron-right"></i> <%=cat %></a></li>
 	      	    <%
 	      	    });
 	      	    %>
@@ -37,7 +40,13 @@
 					    <div class="accordion-heading">
 					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#<%= entry._id %>">
 					        <div class="api-type-<%= entry.method %>"></div>
-					        <div class="api-url-<%= entry.method %>"><%= entry.title %></div>
+					        <div class="api-url-<%= entry.method %>"><%= entry.title %>	
+					        	<button onClick="window.location.assign('/api-delete?id=<%=entry._id %>&api=<%=entry.category %>')" class="btn" style="float:right;margin-right: 10px;padding: 2px 9px;" href=""><i class="icon-trash"></i></button>
+
+					        	<button onClick="window.location.assign('/api-edit?id=<%=entry._id %>');" class="btn" style="float:right;margin-right: 10px;padding: 2px 9px;" href="/api-edit?id=<%=entry._id %>"><i class="icon-pencil"></i></button>
+					        	
+					        </div>
+					        
 					      </a>
 					    </div>
 					    <div id="<%= entry._id %>" class="accordion-body collapse">

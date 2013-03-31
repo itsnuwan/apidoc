@@ -2,10 +2,46 @@
 <html>
   <head>
     <title>NodeJs API Documentation tool</title>
-    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap-wysihtml5.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <script type="text/javascript" src="/javascripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="/javascripts/wysihtml5-0.3.0.js"></script>
     <script type="text/javascript" src="/javascripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/javascripts/bootstrap-wysihtml5.js"></script>  
+  <script type="text/javascript">
+  $(document).ready(function() {
+    var editor_created = false;
+      $(document).on("click", "#api_html_editor_btn", function(){
+          
+          if(editor_created == false)
+          { 
+            $('.api-textarea').show().wysihtml5();
+            editor_created = true;
+          }
+      });
+
+      $(document).on('click', '#add_req_param_btn', function(){
+           $('.request-param:first').clone().appendTo('#request_params');
+           return false;
+      });
+      
+      $(document).on('click', '#add_res_param_btn', function(){
+           $('.response-param:first').clone().appendTo('#response_params');
+           return false;
+      }); 
+
+      $("#api_category").change(function() {
+          if($(this).val() == 'add')
+          {
+              $('.new-api-category').show('slow');
+          }else{
+              $('.new-api-category').hide();
+          }
+      }); 
+  });
+ 
+  </script>
   </head>
   <body>
     <%- body %>

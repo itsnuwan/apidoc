@@ -30,7 +30,14 @@ app.configure('production', function(){
 // Routes
 
 //app.get('/', routes.index);
+app.get('/api-admin', routes.admin);
+app.get('/api-add', routes.add_page);
+app.get('/api-edit', routes.edit_page);
+app.get('/api-delete', routes.delete);
+app.post('/add', routes.add);
+app.post('/edit', routes.edit);
 app.get('/', routes.find);
+
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

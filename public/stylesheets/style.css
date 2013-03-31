@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 10px 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -10,58 +10,85 @@ a:hover{
 	text-decoration:  none;
 }
 .api-type-GET{
-	background-color: rgb(255, 146, 61);
-	padding: 8px;
+	float: left;
 	color: #fff;
+	padding: 8px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
-	padding-left: 43px;
-	padding-right: 46px;
+	width:100px;
+	text-align:center;
+	background-color: rgb(255, 146, 61);
 }
 .api-type-GET:before{
 	content: " GET ";
 }
 .api-type-POST{
+	float: left;
 	background-color: rgb(31, 43, 182);
-	padding: 8px;
 	color: #fff;
+	padding: 8px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
-	padding-right: 37px;
-	padding-left: 43px;	
+	width:100px;
+	text-align:center;
 }
 .api-type-POST:before{
 	content: " POST ";
 }
 
 .api-url-GET{
-	padding-right: 612px;
-	padding-left: 25px;
-	width: 100%;
-	background-color: rgb(255, 249, 244);
-	padding-top: 8px;
-	padding-bottom: 8px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
+	background-color: rgb(255, 249, 244);
+	padding-top: 3px;
+	padding-bottom: 13px;
+	padding-left: 134px;
 }
 .api-url-POST{
-	padding-right: 612px;
-	padding-left: 25px;
-	width: 100%;
-	background-color: rgb(240, 246, 255);
-	padding-top: 8px;
-	padding-bottom: 8px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
+	background-color: rgb(240, 246, 255);
+	padding-top: 3px;
+	padding-bottom: 13px;
+	padding-left: 134px;
 }
 
 .accordion-toggle{
 	padding-left: 0px !important;
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
 }
+
 .accordion-group{
 	margin-bottom: 10px;
+}
+.clickable{
+	cursor: pointer;
+}
+legend{
+	color: rgb(223, 87, 120);
+	font-size: 17px;
+	border-bottom-color:rgba(235, 235, 235, 0.59);
+}
+.api-html-area{
+	background-color: #dceaf4;
+	margin: 0 auto;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 20px;
+}
+.new-api-category{
+	display: none;
+}
+
+h1{
+text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+color: rgb(45, 167, 190);
+opacity: 0.3;
+font: 36px 'Museo700';
 }
