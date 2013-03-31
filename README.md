@@ -26,6 +26,8 @@ This will install all required nodejs packages mentioned in package.json
     node app
 
 Then your DONE.Visit http://localhost:3000 to see the result
+And for the admin area visit http://localhost:3000/api-admin
+
 You might need some data filled with the database to view colorfull doc.
 Enjoy ...
 
@@ -48,7 +50,7 @@ TODO
 * GUI improvements
 * User( role base ) authentication
 * Administration functionalities
-  * CRUD operations of api data
+  * CRUD operations of api data >> done
 * Support multiple database drivers ( MySQL, CouchDB, FileSysStorage, etc... )
 * Add more TODOs to TODO list
 
