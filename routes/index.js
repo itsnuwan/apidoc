@@ -1,7 +1,8 @@
 /*
  * GET home page.
  */
-var APIEntry = require("../models/APIEntry.js")
+var APIEntry = require("../models/APIEntry.js");
+var User 	 = require("../models/User.js")
 
 exports.index = function(req, res){
   res.render('index', { title: 'Express' })
@@ -110,3 +111,30 @@ exports.delete = function(req, res){
 		}
 	})
 };
+
+exports.login = function(username, password, done) {
+     User.findUser({ username: username,password: password }, function(err, user) {
+       	   if (err) { return done(err); }
+       	   //console.log(user);
+	       if (!user) {
+	         return done(null, false, { message: 'Incorrect username or password.' });
+	       }
+
+       return done(null, user);
+     }) ;
+ };
+
+ exports.login_page = function(req, res){
+ 	res.render('login');
+ };
+
+ exports.deserializeUser = function(id, done) {
+   User.findUser({ username: id}, function(err, user) {
+  	//var user = {username:"nuwan",password:"123",id:"1234"};
+  	//var err = null;
+    done(err, user);
+  });
+}
+
+
+
