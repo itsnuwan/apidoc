@@ -52,32 +52,36 @@
 					                <tr>
 					                  <td>Request Params</td>
 					                  <td>
+					                    <ul>
 					                  		<%
 					                  		if(entry.params != 'undefined' && typeof entry.params == "object")
 					                  		{
 												entry.params.forEach( function( param ) { 
 											%>
-					                  				<span class="param-entry"><b><%=param.name%></b> : <i><%=param.description%></i></span><br/>
+					                  				<li><span class="param-entry"><b> <%=param.name%></b> : <i><%=param.description%></i></span></li>
 					                  		<%
 												});
 											}
 											%>
+										</ul>
 					                  </td>
 					                </tr>
 
 					                <tr>
 					                  <td>Response</td>
 					                  <td>
+					                    <ul>
 					                  		<%
 					                  		if(entry.response != 'undefined' && typeof entry.response == "object")
 					                  		{
 												entry.response.forEach( function( response ) { 
 											%>
-					                  				<span class="param-entry"><b><%=response.name%></b> : <i><%=response.description%></i></span><br/>
+					                  				<li><span class="param-entry"><b><%=response.name%></b> : <i><%=response.description%></i></span></li>
 					                  		<%
 												});
 											}
 											%>
+										</ul>
 					                  </td>
 					                </tr>
 					              </tbody>
