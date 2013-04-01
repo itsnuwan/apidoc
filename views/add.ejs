@@ -52,39 +52,39 @@
 	</div>
 	<!-- #################### Request params ###################### -->
     <legend class="clickable" data-toggle="collapse" data-target="#request_params">Request parameters</legend>
-    <fieldset id="request_params" class="collapse">
+    <div id="request_params" class="collapse">
     	<button class="btn" id="add_req_param_btn">Add+</button>
 		<div class="control-group request-param">
 			<label class="control-label" for="api_param_name"></label>
 			<div class="controls">
 				<input type="text" placeholder="Parameter name" name="api_param_name" />
-				<input type="text" placeholder="Parameter description" name="api_param_value" />
+				<textarea style="width: 400px; height: 20px;" placeholder="Parameter description" name="api_param_value"></textarea>
 			</div>
 		</div>
-	</fieldset>
+	</div>
 	<!-- ################### Response params ##################### -->
     <legend class="clickable" data-toggle="collapse" data-target="#response_params">Response parameters</legend>
-    <fieldset id="response_params" class="collapse">
+    <div id="response_params" class="collapse">
     	<button class="btn" id="add_res_param_btn">Add+</button>
     	<div class="control-group response-param">
 			<label class="control-label" for="api_response_param_name"></label>
 			<div class="controls">
 				<input type="text" placeholder="Parameter name" name="api_response_param_name" />
-				<input type="text" placeholder="value" name="api_response_param_value" />
+				<textarea style="width: 400px; height: 20px;" placeholder="Parameter description" name="api_response_param_value"></textarea>
 			</div>
 		</div>
-    </fieldset>
+    </div>
     <!-- ################### End of Response params ############## -->
 
     <!-- ################### HTML Editor ######################### -->
     <legend class="clickable" id="api_html_editor_btn" data-toggle="collapse" data-target="#api_html_editor">HTML Editor</legend>
-    <fieldset id="api_html_editor" class="collapse">
+    <div id="api_html_editor" class="collapse">
 		<div class="control-group">
 	    	<div class="controls">
 	      		<textarea name="api_html_data" style="width: 810px; height: 200px;display:none;" class="api-textarea" placeholder="Enter text ..."></textarea>
 	    	</div>
 	  	</div>
-	</fieldset>
+	</div>
   	<!-- ################### End of HTML editor ################## -->
 	<div class="control-group">
     	<div class="controls">
