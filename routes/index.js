@@ -17,16 +17,14 @@ exports.admin = function(req, res){
 			console.log("ERR:"+err);
 		}else{
 			var api_to_show= '';
-
 			if(req.query.api == undefined)
 			{
 				api_to_show = categories[0];
 			}else{
 				api_to_show = req.query.api;
 			}
-
 			APIEntry.findAPIs({'category':api_to_show}, function(err, entries){
-				res.render('admin',{"entries":entries,"categories":categories,"api":api_to_show});
+				res.render('admin',{"entries":entries,"categories":categories,"api":api_to_show,"msg":req.query.msg});
 			});
 		}
 
@@ -107,7 +105,7 @@ exports.delete = function(req, res){
 			console.log("Error :"+err);
 		}else{
 			//Redirect to api-admin page
-			res.redirect('/api-admin/?api='+req.query.api+'&msg=new entry successfully deleted');
+			res.redirect('/api-admin/?api='+req.query.api+'&msg=API entry successfully deleted');
 		}
 	})
 };

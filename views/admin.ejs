@@ -1,4 +1,12 @@
 <h1>API Documentation :: Admin Area</h1>
+<% 
+if(msg != undefined)
+{ %>
+	<div class="alert">
+	  <button type="button" class="close" data-dismiss="alert">&times;</button>
+	  <strong>Message : </strong><%=msg %>
+	</div>
+<% } %>
 
 <ul class="breadcrumb">
   <li><a href="/api-admin">AdminHome</a></li><span class="divider"> /</span>
