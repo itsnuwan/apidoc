@@ -74,7 +74,7 @@ if(msg != undefined)
 					                  		{
 												entry.params.forEach( function( param ) { 
 											%>
-					                  				<%=param.name%> : <%=param.description%><br/>
+					                  				<span class="param-entry"><b><%=param.name%></b> : <i><%=param.description%></i></span><br/>
 					                  		<%
 												});
 											}
@@ -90,7 +90,7 @@ if(msg != undefined)
 					                  		{
 												entry.response.forEach( function( response ) { 
 											%>
-					                  				<%=response.name%> : <%=response.description%><br/>
+					                  				<span class="param-entry"><b><%=response.name%></b> : <i><%=response.description%></i></span><br/>
 					                  		<%
 												});
 											}

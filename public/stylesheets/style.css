@@ -92,3 +92,8 @@ color: rgb(45, 167, 190);
 opacity: 0.3;
 font: 36px 'Museo700';
 }
+.param-entry{
+	display: inline-block;
+	padding-bottom: 3px;
+	color: rgb(94, 94, 109);
+}
