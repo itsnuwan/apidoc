@@ -16,7 +16,10 @@
           
           if(editor_created == false)
           { 
-            $('.api-textarea').show().wysihtml5();
+            $('.api-textarea').show().wysihtml5({
+              html:true,
+              color:true
+            });
             editor_created = true;
           }
       });
