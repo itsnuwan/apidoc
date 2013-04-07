@@ -60,3 +60,9 @@ Release Notes
 
 See HISTORY
 
+License
+=======
+Copyright © 2013 Nuwan Madhawa(its4nuwan@gmail.com)
+
+Licensed under the [GPL license v2](http://www.gnu.org/licenses/gpl-2.0.html)
+
