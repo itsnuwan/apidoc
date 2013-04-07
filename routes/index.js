@@ -17,6 +17,7 @@ exports.admin = function(req, res){
 		{
 			console.log("ERR:"+err);
 		}else{
+
 			if(req.query.api == undefined)
 			{
 				res.render('admin',{"entries":undefined,"apis":apis,"api":undefined,"msg":req.query.msg});
@@ -61,7 +62,17 @@ exports.find = function(req, res){
 
 			if(req.query.api == undefined)
 			{
-				res.render('APIs',{"entries":undefined,"apis":apis,"api":req.query.api});
+				var first_api_name;//TODO add home pahe html load when no api
+				apis.forEach(function(tmp_api){
+					if(first_api_name == undefined)
+					{
+						first_api_name = tmp_api.name;
+					}
+				})
+				APIEntry.findAPIs({'category':first_api_name}, function(err, entries){
+					res.render('APIs',{"entries":entries,"apis":apis,"api":first_api_name});
+				});
+				
 			}else{
 				APIEntry.findAPIs({'category':req.query.api}, function(err, entries){
 					res.render('APIs',{"entries":entries,"apis":apis,"api":req.query.api});

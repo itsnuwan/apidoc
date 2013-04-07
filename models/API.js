@@ -17,7 +17,7 @@ function addAPI(req, callback)
 	var instance = new API();
 	instance.name		= req.body.api_name;
 	instance.title 		= req.body.api_title;
-	instance.html   	= req.body.api_intro;
+	instance.html   	= req.body.add_api_intro;
 
 	instance.save(function (err) {
 		if (err) {
