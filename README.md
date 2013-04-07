@@ -1,7 +1,8 @@
 apidoc
 ======
 
-RESTfull API Documentation Tool by using Nodejs and MongoDB
+RESTfull API documentation tool by using Nodejs and MongoDB which is acting as a CMS that tailor-maded for the API-documentation.
+This contains both frontend and backend functionalities to easily maintain documentation with attactive user interfaces painted with twitter-bootstrap.
 
 Requirements
 ============
@@ -45,7 +46,7 @@ Used technologies/modules
             * mongoose [ mongoDB driver for nodejs ]
         
 
-TODO
+Todo
 ====
 * GUI improvements
 * User( role base ) authentication
@@ -59,4 +60,10 @@ Release Notes
 =============
 
 See HISTORY
+
+License
+=======
+Copyright © 2013 Nuwan Madhawa(its4nuwan@gmail.com)
+
+Licensed under the [GPL license v2](http://www.gnu.org/licenses/gpl-2.0.html)
 
