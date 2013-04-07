@@ -12,6 +12,28 @@
     <script type="text/javascript" src="/javascripts/bootstrap-wysihtml5.js"></script>  
   <script type="text/javascript">
   $(document).ready(function() {
+    $('#add_api_intro').wysihtml5({
+              html:true,
+              color:true
+    });
+
+    var intro_editor_created = false;      
+    $(document).on('click','#edit_api_intro_btn',function(e){
+
+      if(!intro_editor_created)
+      {
+          e.preventDefault();
+          $('#api_intro').wysihtml5({
+              html:true,
+              color:true
+          });
+          
+          intro_editor_created = true;
+      }
+      $('#api-intro-form').toggle('slow');
+          
+    });
+
     var editor_created = false;
       $(document).on("click", "#api_html_editor_btn", function(){
           
@@ -50,4 +72,10 @@
   <body>
     <%- body %>
   </body>
+
+  <div id="footer" class="navbar-fixed-bottom">
+      <div class="container">
+        <p class="muted credit" style="font-size:11px;"> Powered by <a target='_blank' href="https://github.com/its4nuwan/apidoc">apidoc</a></p>
+      </div>
+  </div>
 </html>

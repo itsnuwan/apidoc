@@ -13,24 +13,63 @@ if(msg != undefined)
   <li class="active"><%=api %> </li>
 </ul>
 
+<a style="margin: 0px 0px 14px 22px;" class="btn" href="/add-api-page"><i class="icon-plus"></i> New API</a>
 <a style="margin: 0px 0px 14px 22px;" class="btn" href="/api-add"><i class="icon-plus"></i> New API Entry</a>
+<% if(api != undefined) { %>
+<a style="margin: 0px 0px 14px 22px;" class="btn" href="#" id="edit_api_intro_btn"><i class="icon-pencil"></i> Edit API Introduction</a>
+<% } %>
 
+<% if(apis != undefined && api != undefined)
+   {
+   		apis.forEach(function(tmp_api){
+   			if(tmp_api.name == api)
+   			{
+   				%>
+				<form class="well well-small" action="/edit-api-intro" id="api-intro-form" method="post" style="display:none">
+				    <div class="container">
+				    	<div class="control-group">
+								<div class="controls">
+									<textarea style="width: 400px; height: 20px;" placeholder="API header title" name="api_title"><%=tmp_api.title %></textarea>
+								</div>
+						</div>
+						<div class="control-group">
+								<div class="controls">
+									<textarea placeholder="Api introduction goes here..." style="width:85%;height:500px;" name="api_intro" id="api_intro"><%-tmp_api.html %></textarea>
+								</div>
+						</div>
+						<div class="control-group">
+								<div class="controls">
+									<input type="submit" value="Save" class="btn"/>
+								</div>
+						</div>
+					</div>
+					<input type="hidden" name="api_name" value="<%=tmp_api.name %>"/>
+					<input type="hidden" name="api_id" value="<%=tmp_api._id %>"/>
+				</form>
+   				<%
+   			}
+   		});
+   }
+%>
 
 <div class="container-fluid">
   	<div class="row-fluid">
 	    <div class="span2">
 	      	<ul class="nav nav-tabs nav-stacked">
-	      	    <% 
-	      	    categories.forEach( function( cat ) {
+	      	    <%
+	      	    if(apis != undefined)
+	      	    {
+      	    		apis.forEach( function( cat ) {
 	      	    	var active = '';
-	      	    	if(api == cat)
+	      	    	if(api == cat.name)
 	      	    	{
 	      	    		active = "active";
 	      	    	}
 	      	    %>
-	      	    	<li class="<%=active %>"><a href="/api-admin/?api=<%=cat %>"><i class="icon-chevron-right"></i> <%=cat %></a></li>
+	      	    	<li class="<%=active %>"><a href="/api-admin/?api=<%=cat.name %>"><i class="icon-chevron-right"></i> <%=cat.name %></a></li>
 	      	    <%
-	      	    });
+	      	    	});
+	      	    }
 	      	    %>
 			</ul>
 	    </div>
@@ -39,9 +78,11 @@ if(msg != undefined)
 			<div class="accordion" id="accordion2">
 
 				<%
-				entries.forEach( function( entry ) { 
-					if(api == entry.category )
-					{
+				if(entries != undefined && api != undefined)
+				{
+					entries.forEach( function( entry ) { 
+						if(api == entry.category )
+						{
 				%>
 
 					<div class="accordion-group">
@@ -111,8 +152,13 @@ if(msg != undefined)
 					    </div>
 					</div>
 				<%
-					}
-				});
+						}
+					});
+				}else{
+				%>
+					Home page
+				<%
+				}
 				%>
 			</div>
 	    </div>

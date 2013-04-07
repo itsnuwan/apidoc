@@ -2,7 +2,8 @@
  * GET home page.
  */
 var APIEntry = require("../models/APIEntry.js");
-var User 	 = require("../models/User.js")
+var User 	 = require("../models/User.js");
+var API      = require("../models/API.js");
 
 exports.index = function(req, res){
   res.render('index', { title: 'Express' })
@@ -10,22 +11,20 @@ exports.index = function(req, res){
 
 exports.admin = function(req, res){
 
-	APIEntry.findAllCategories(function(err,categories)
+	API.findAPIs({},function(err,apis)
 	{
 		if(err)
 		{
 			console.log("ERR:"+err);
 		}else{
-			var api_to_show= '';
 			if(req.query.api == undefined)
 			{
-				api_to_show = categories[0];
+				res.render('admin',{"entries":undefined,"apis":apis,"api":undefined,"msg":req.query.msg});
 			}else{
-				api_to_show = req.query.api;
-			}
-			APIEntry.findAPIs({'category':api_to_show}, function(err, entries){
-				res.render('admin',{"entries":entries,"categories":categories,"api":api_to_show,"msg":req.query.msg});
-			});
+				APIEntry.findAPIs({'category':req.query.api}, function(err, entries){
+					res.render('admin',{"entries":entries,"apis":apis,"api":req.query.api,"msg":req.query.msg});
+				});
+			}			
 		}
 
 	});
@@ -33,8 +32,8 @@ exports.admin = function(req, res){
 };
 
 exports.add_page = function(req, res){
-	APIEntry.findAllCategories(function(err,categories){
-				res.render('add', {"categories":categories});
+	API.findAPIs({}, function(err,apis){
+				res.render('add', {"apis":apis});
 	});
 };
 
@@ -52,7 +51,7 @@ exports.edit_page = function(req, res){
 };
 
 exports.find = function(req, res){
-	APIEntry.findAllCategories(function(err,categories)
+	API.findAPIs({}, function(err,apis)
 	{
 		if(err)
 		{
@@ -62,14 +61,14 @@ exports.find = function(req, res){
 
 			if(req.query.api == undefined)
 			{
-				api_to_show = categories[0];
+				res.render('APIs',{"entries":undefined,"apis":apis,"api":req.query.api});
 			}else{
-				api_to_show = req.query.api;
+				APIEntry.findAPIs({'category':req.query.api}, function(err, entries){
+					res.render('APIs',{"entries":entries,"apis":apis,"api":req.query.api});
+				});
 			}
 
-			APIEntry.findAPIs({'category':api_to_show}, function(err, entries){
-				res.render('APIs',{"entries":entries,"categories":categories,"api":api_to_show});
-			});
+			
 		}
 	});
 };
@@ -132,7 +131,37 @@ exports.login = function(username, password, done) {
   	//var err = null;
     done(err, user);
   });
-}
+};
+
+exports.add_api_intro = function(req, res)
+{
+	API.addAPI(req, function(err){
+		if (err) 
+		{
+			console.log("Error :"+err);
+		}else{
+			//Redirect to api-admin page
+			res.redirect('/api-admin/?api='+req.body.api_name+'&msg=new api successfully added');
+		}
+	})
+};
+
+exports.edit_api_intro = function(req, res)
+{
+	API.editAPI(req, function(err){
+		if (err) 
+		{
+			console.log("Error >> :"+err);
+		}else{
+			//Redirect to api-admin page
+			res.redirect('/api-admin/?api='+req.body.api_name+'&msg=api successfully updated');
+		}
+	})
+};
+
+exports.add_api_page = function(req, res){
+				res.render('add_api');
+};
 
 
 

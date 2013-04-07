@@ -2,22 +2,28 @@
 
 <ul class="breadcrumb">
   <li><a href="/">Home</a></li><span class="divider"> /</span>
-  <li class="active"><%=api %> </li>
+  <% if(api != undefined){ %>
+	  <li class="active">
+	  		<%=api %>
+	  </li>
+  <% } %> 
 </ul>
 
 <div class="container-fluid">
   	<div class="row-fluid">
 	    <div class="span2">
 	      	<ul class="nav nav-tabs nav-stacked">
-	      	    <% 
-	      	    categories.forEach( function( cat ) {
+	      	    <%
+	      	    var cur_api; 
+	      	    apis.forEach( function( tmp_api ) {
 	      	    	var active = '';
-	      	    	if(api == cat)
+	      	    	if(api == tmp_api.name)
 	      	    	{
-	      	    		active = "active";
+	      	    		active  = "active";
+	      	    		cur_api = tmp_api;
 	      	    	}
 	      	    %>
-	      	    	<li class="<%=active %>"><a href="/?api=<%=cat %>"><i class="icon-chevron-right"></i> <%=cat %></a></li>
+	      	    	<li class="<%=active %>"><a href="/?api=<%=tmp_api.name %>"><i class="icon-chevron-right"></i> <%=tmp_api.name %></a></li>
 	      	    <%
 	      	    });
 	      	    %>
@@ -25,12 +31,30 @@
 	    </div>
 
 	    <div class="span10">
+	    	<%  if(cur_api != undefined)
+		    	{
+		    		%>
+		    			<a href="#" data-toggle="collapse" data-target="#api_intro_html"><h3><%=cur_api.title%></h3></a>
+		    			<div id="api_intro_html" class="collapse">
+		    				<div class="api-intro">
+		    					<%-cur_api.html %>
+		    				</div>		
+		    			</div>
+		    		<%
+		    	}
+	    	%>
+	    </div>
+
+
+	    <div class="span10">
 			<div class="accordion" id="accordion2">
 
 				<%
-				entries.forEach( function( entry ) { 
-					if(api == entry.category )
-					{
+				if(entries != undefined)
+				{
+					entries.forEach( function( entry ) { 
+						if(api == entry.category )
+						{
 				%>
 
 					<div class="accordion-group">
@@ -94,8 +118,13 @@
 					    </div>
 					</div>
 				<%
-					}
-				});
+						}
+					});
+				}else{
+				%>
+					just api page only
+				<%
+				}
 				%>
 			</div>
 	    </div>

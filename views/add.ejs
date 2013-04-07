@@ -2,20 +2,19 @@
 
 <ul class="breadcrumb">
   <li><a href="/api-admin">AdminHome</a> <span class="divider">/</span></li>
-  <li class="active">Add</li>
+  <li class="active">Add new entry</li>
 </ul>
 
 <form class="form-horizontal" method="post" action="/add">
 	<div class="control-group">
-		<label class="control-label" for="api_category">API Category </label>
+		<label class="control-label" for="api_category">API </label>
 		<div class="controls">
 			<select name="api_category" id="api_category">
-				<% categories.forEach( function( cat ) { 
-					var uc_cat = cat.toUpperCase();
+				<% apis.forEach( function( api ) { 
+					var uc_api = api.name.toUpperCase();
 				%>
-					<option value="<%=cat %>"><%=uc_cat %></option>
+					<option value="<%=api.name %>"><%=uc_api %></option>
 				<% }); %>
-				<option value="add">Add New+</option>
 			</select>
 		</div>
 	</div>
@@ -28,13 +27,13 @@
 	</div>
 
   	<div class="control-group">
-  		<label class="control-label" for="api_title">Title </label>
+  		<label class="control-label" for="api_title">Entry Title </label>
 	  	<div class="controls">
 			<input type="text" placeholder=" eg-: Create new user" name="api_title" id="api_title" />
 		</div>
 	</div>
 	<div class="control-group">
-		<label class="control-label" for="api_url">URL </label>
+		<label class="control-label" for="api_url">Entry URL </label>
 		<div class="controls">
 			<input type="text" placeholder=" eg-: /user/create" name="api_url" id="api_url" />
 		</div>

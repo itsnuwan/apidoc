@@ -45,8 +45,11 @@ app.get('/login', routes.login_page);
 app.get('/api-add', routes.add_page);
 app.get('/api-edit', routes.edit_page);
 app.get('/api-delete', routes.delete);
+app.get('/add-api-page', routes.add_api_page);
 app.post('/add', routes.add);
 app.post('/edit', routes.edit);
+app.post('/add-api-intro', routes.add_api_intro);
+app.post('/edit-api-intro', routes.edit_api_intro);
 app.get('/', routes.find);
 app.post('/login',
   passport.authenticate('local', { successRedirect: '/api-admin',

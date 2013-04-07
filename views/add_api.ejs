@@ -1,0 +1,31 @@
+<h1>API Documentation :: Add New API</h1>
+
+<ul class="breadcrumb">
+  <li><a href="/api-admin">AdminHome</a> <span class="divider">/</span></li>
+  <li class="active">Add API</li>
+</ul>
+
+<form action="/add-api-intro" id="add_api-intro-form" method="post">
+    <div class="container">
+    	<div class="control-group">
+				<div class="controls">
+					<textarea style="width: 400px; height: 20px;" placeholder="API name eg:usermgt" name="api_name"></textarea>
+				</div>
+		</div>
+    	<div class="control-group">
+				<div class="controls">
+					<textarea style="width: 400px; height: 20px;" placeholder="API header title" name="api_title"></textarea>
+				</div>
+		</div>
+		<div class="control-group">
+				<div class="controls">
+					<textarea placeholder="Api introduction goes here..." style="width:85%;height:500px;" name="add_api_intro" id="add_api_intro"></textarea>
+				</div>
+		</div>
+		<div class="control-group">
+				<div class="controls">
+					<input type="submit" value="Save" class="btn"/>
+				</div>
+		</div>
+	</div>
+</form>
