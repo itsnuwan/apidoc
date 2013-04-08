@@ -33,7 +33,7 @@ if(msg != undefined)
 
 <% 
 	var home_api = {title:"Home page title",name:"home",html:"Home page"};
-   if(apis != undefined && api != undefined)
+   if(apis != undefined)
    {
    		apis.forEach(function(tmp_api){
    			if(tmp_api.name == api)
@@ -61,7 +61,10 @@ if(msg != undefined)
 					<input type="hidden" name="api_id" value="<%=tmp_api._id %>"/>
 				</form>
    				<%
-   			}else if(tmp_api.name == 'home'){
+   			}
+ 
+   			if(tmp_api.name == 'home')
+   			{
    				home_api = tmp_api;
    			}
    		});
