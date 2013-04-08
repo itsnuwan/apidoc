@@ -21,7 +21,7 @@ module.exports.deleteAPIEntry 	 = deleteAPIEntry;
 module.exports.findAllCategories = findAllCategories;
 
 function findAPIs(query,callback) {
-	APIEntry.find(query,function (err,instance) {
+	APIEntry.find(query,null,{sort:{_id:1}},function (err,instance) {
 		if (err) {
 			callback(err);
 		}

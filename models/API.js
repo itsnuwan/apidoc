@@ -74,7 +74,7 @@ function findOneAPI(query, callback)
 
 function findAPIs(query, callback)
 {
-		API.find(query,function (err,instances) {
+		API.find(query,null,{sort:{_id:1}},function (err,instances) {
 		if (err) {
 			callback(err);
 		}
