@@ -17,7 +17,7 @@ function addAPI(req, callback)
 	var instance = new API();
 	instance.name		= req.body.api_name;
 	instance.title 		= req.body.api_title;
-	instance.html   	= req.body.add_api_intro;
+	instance.html   	= req.body.api_intro;
 
 	instance.save(function (err) {
 		if (err) {
@@ -32,22 +32,31 @@ function addAPI(req, callback)
 function editAPI(req, callback)
 {
 	findAPIs({_id:req.body.api_id},function(err,instance){
+		if(instance == undefined)
+		{
+			//No api found
+	    	//if id = 1 then create home page api 
+	    	if(req.body.api_id == 1)
+	    	{
+	    		addAPI(req, callback);
+	    	}
+		}else{
+	    	
+			if(req.body.api_name != 'undefined')
+		    {
+		    	instance.title 	= req.body.api_title;
+				instance.html 	= req.body.api_intro;
 
-		instance.title 	= req.body.api_title;
-		instance.html 	= req.body.api_intro;
-
-		if(req.body.api_name != 'undefined')
-	    {
-	    	API.findByIdAndUpdate(req.body.api_id,instance,function (err) {
-				if (err) {
-					callback(err);
-				}
-				else {
-					callback(null, instance);
-				}
-			});
-	    }
-		
+		    	API.findByIdAndUpdate(req.body.api_id,instance,function (err) {
+					if (err) {
+						callback(err);
+					}
+					else {
+						callback(null, instance);
+					}
+				});
+		    }
+		}
 	});
 }
 

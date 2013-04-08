@@ -22,9 +22,12 @@
 	      	    		active  = "active";
 	      	    		cur_api = tmp_api;
 	      	    	}
+	      	    	if(tmp_api.name != 'home')
+	      	    	{
 	      	    %>
-	      	    	<li class="<%=active %>"><a href="/?api=<%=tmp_api.name %>"><i class="icon-chevron-right"></i> <%=tmp_api.name %></a></li>
+	      	    		<li class="<%=active %>"><a href="/?api=<%=tmp_api.name %>"><i class="icon-chevron-right"></i> <%=tmp_api.name %></a></li>
 	      	    <%
+	      	    	}
 	      	    });
 	      	    %>
 			</ul>
@@ -35,7 +38,7 @@
 		    	{
 		    		%>
 		    			<a href="#" data-toggle="collapse" data-target="#api_intro_html"><h3><%=cur_api.title%></h3></a>
-		    			<div id="api_intro_html" class="collapse">
+		    			<div id="api_intro_html" class="collapse <% if(cur_api.name =='home'){%>in<%} %>">
 		    				<div class="api-intro">
 		    					<%-cur_api.html %>
 		    				</div>		

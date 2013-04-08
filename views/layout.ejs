@@ -12,10 +12,11 @@
     <script type="text/javascript" src="/javascripts/bootstrap-wysihtml5.js"></script>  
   <script type="text/javascript">
   $(document).ready(function() {
-    $('#add_api_intro').wysihtml5({
-              html:true,
-              color:true
-    });
+      $('#api_intro').wysihtml5({
+                html:true,
+                color:true
+      });
+    
 
     var intro_editor_created = false;      
     $(document).on('click','#edit_api_intro_btn',function(e){

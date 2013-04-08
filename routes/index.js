@@ -62,13 +62,13 @@ exports.find = function(req, res){
 
 			if(req.query.api == undefined)
 			{
-				var first_api_name;//TODO add home pahe html load when no api
-				apis.forEach(function(tmp_api){
-					if(first_api_name == undefined)
-					{
-						first_api_name = tmp_api.name;
-					}
-				})
+				var first_api_name;//add home page html load when no api
+				
+				if(first_api_name == undefined)
+				{
+					first_api_name = 'home';
+				}
+
 				APIEntry.findAPIs({'category':first_api_name}, function(err, entries){
 					res.render('APIs',{"entries":entries,"apis":apis,"api":first_api_name});
 				});
@@ -78,7 +78,6 @@ exports.find = function(req, res){
 					res.render('APIs',{"entries":entries,"apis":apis,"api":req.query.api});
 				});
 			}
-
 			
 		}
 	});
@@ -173,6 +172,3 @@ exports.edit_api_intro = function(req, res)
 exports.add_api_page = function(req, res){
 				res.render('add_api');
 };
-
-
-
