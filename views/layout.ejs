@@ -16,21 +16,9 @@
                 html:true,
                 color:true
       });
-    
-
-    var intro_editor_created = false;      
+       
     $(document).on('click','#edit_api_intro_btn',function(e){
 
-      if(!intro_editor_created)
-      {
-          e.preventDefault();
-          $('#api_intro').wysihtml5({
-              html:true,
-              color:true
-          });
-          
-          intro_editor_created = true;
-      }
       $('#api-intro-form').toggle('slow');
           
     });
